@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -52,6 +53,9 @@
                             @if(Auth::user()->is_admin)
                             <li class="nav-item">
                                 <a class="btn" role="button" href="/add" >Add An Article</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn" role="button" href="/my-articles" >My Articles</a>
                             </li>
                             @endif
                             <li class="nav-item">

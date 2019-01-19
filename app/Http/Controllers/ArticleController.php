@@ -9,4 +9,8 @@ class ArticleController extends Controller
     function index() {
         return view('home');
     }
+
+    function add() {
+        return view('blog.add');
+    }
 }

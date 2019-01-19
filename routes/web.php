@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'ArticleController@index')->name('home');
+    Route::get('/add', 'ArticleController@add')->name('add-article');
 });
