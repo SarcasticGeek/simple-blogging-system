@@ -11,7 +11,7 @@ class CommentRepository implements CommentRepositoryInterface{
     }
 
     public function create($data){
-        $this->comment->create($data);
+        return $this->comment->create($data);
     }
 
     public function update($data, $id){

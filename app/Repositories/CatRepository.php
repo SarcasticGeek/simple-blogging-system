@@ -12,7 +12,7 @@ class CatRepository implements CatRepositoryInterface
     }
 
     public function create($data){
-        $this->cat->create($data);
+        return $this->cat->create($data);
     }
 
     public function delete($id){

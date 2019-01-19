@@ -29,7 +29,7 @@ class User extends Authenticatable
     ];
 
     public function savedArticles() {
-        return $this->belongsToMany('App\Article');
+        return $this->belongsToMany('App\Article','user_article');
     }
 
     public function authoredArticles() {

@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Article;
 
-class ArticleRepositry implements ArticleRepositoryInterface {
+class ArticleRepository implements ArticleRepositoryInterface {
 
     protected $article;
 
@@ -13,7 +13,7 @@ class ArticleRepositry implements ArticleRepositoryInterface {
     }
 
     public function create($data){
-        $this->article->create($data);
+        return $this->article->create($data);
     }
 
     public function update($id, $data){
@@ -52,7 +52,7 @@ class ArticleRepositry implements ArticleRepositoryInterface {
     }
 
     public function showAllComments(){
-        return $this->article->comments();
+        return $this->article->comments;
     }
 
 }

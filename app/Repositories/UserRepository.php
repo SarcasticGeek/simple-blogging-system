@@ -9,14 +9,16 @@ class UserRepository implements UserRepositoryInterface{
         $this->user = $user;
     }
 
-    public function getAllsavedArticlesByUser(){
-        return $this->user->whereHas('savedArticles', function($q) {
+    public function getAllsavedArticlesByUser($id){
+        $user = $this->user->find($id);
+        return $user->whereHas('savedArticles', function($q) {
             $q->where('is_published', true);
         })->get();
     }
 
-    public function getUserArticles(){
-        return $this->authoredArticles();
+    public function getUserArticles($id){
+        $user = $this->user->find($id);
+        return $user->authoredArticles;
     }
 
 }

@@ -52,7 +52,7 @@
                         @else
                             @if(Auth::user()->is_admin)
                             <li class="nav-item">
-                                <a class="btn" role="button" href="/add" >Add An Article</a>
+                                <a class="btn" role="button" href="/article/create" >Add An Article</a>
                             </li>
                             <li class="nav-item">
                                 <a class="btn" role="button" href="/my-articles" >My Articles</a>

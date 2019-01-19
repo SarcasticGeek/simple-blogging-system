@@ -5,7 +5,7 @@ namespace App\Repositories;
 interface UserRepositoryInterface
 {
 
-    public function getAllsavedArticlesByUser();
+    public function getAllsavedArticlesByUser($id);
 
-    public function getUserArticles();
+    public function getUserArticles($id);
 }
