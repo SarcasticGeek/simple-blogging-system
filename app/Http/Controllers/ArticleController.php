@@ -60,7 +60,11 @@ class ArticleController extends Controller
     public function showone($id) {
         $article = $this->article->show($id);
         $author_name = $article->author->name;
-        return view('blog.article')->with('article',$article)->with('author',$author_name);
+        $comments = $article->comments;
+        return view('blog.article')
+            ->with('article',$article)
+            ->with('author',$author_name)
+            ->with('comments',$comments);
     }
 
     public function save($id) {
