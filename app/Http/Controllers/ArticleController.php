@@ -16,7 +16,9 @@ class ArticleController extends Controller
     }
 
     public function index() {
-        return view('home');
+        $user_id = Auth::user()->id;
+        $articles = $this->article->showAllPublished($user_id);
+        return view('blog.savedlist')->with('articles',$articles);
     }
 
     public function add() {

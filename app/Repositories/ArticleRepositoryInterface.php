@@ -18,7 +18,9 @@ interface ArticleRepositoryInterface
 
     public function saveArticletoUser($id, $user_id);
 
-    public function showAllPublished();
+    public function unsaveArticletoUser($id, $user_id);
+
+    public function showAllPublished($user_id);
 
     public function showAllComments();
 }

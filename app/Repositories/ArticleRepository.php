@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Article;
+use DB;
 
 class ArticleRepository implements ArticleRepositoryInterface {
 
@@ -47,8 +48,20 @@ class ArticleRepository implements ArticleRepositoryInterface {
         return $article_->savedUsers()->attach($user_id);
     }
 
-    public function showAllPublished(){
-        return $this->article->where('is_published',true)->get();
+    public function unsaveArticletoUser($id, $user_id){
+        return DB::table('user_article')->where('user_id', $user_id)->where('article_id',$id)->delete();
+    }
+
+    public function showAllPublished($user_id){
+        $articles = $this->article->where('is_published',true)->get();
+        foreach ($articles as $article) {
+            if(DB::table('user_article')->where('user_id', $user_id)->where('article_id',$article->id)->first()){
+                $article->saved = true;
+            }else {
+                $article->saved = false;
+            }
+        }
+        return $articles;
     }
 
     public function showAllComments(){
