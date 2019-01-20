@@ -25,7 +25,17 @@ Route::middleware(['auth'])->group(function () {
         Route::get('{id}/edit', 'ArticleController@update')->name('update-article');
         Route::post('{id}/update', 'ArticleController@updateaction')->name('update-action-article');
         Route::delete('{id}/delete', 'ArticleController@delete')->name('delete-action-article');
-        Route::get('{id}', 'ArticleController@showone')->name('view-article');
+        Route::get('{id}/save', 'ArticleController@save')->name('save-article');
+        Route::get('{id}/unsave', 'ArticleController@unsave')->name('unsave-article');
+        Route::get('{id}/publish', 'ArticleController@publish')->name('publish-article');
+        Route::get('{id}/unpublish', 'ArticleController@unplish')->name('unpublish-article');
+        Route::get('{id}/comment', 'CommentController@unplish')->name('comment-article');
+    });
+    Route::group(['prefix' => 'cat'], function () {
+        Route::get('/create', 'CatController@add')->name('create-cat');
+        Route::post('/create', 'CatController@store')->name('create-action-cat');
+        Route::delete('{id}/delete', 'CatController@delete')->name('delete-action-cat');
+        Route::get('{id}/articles', 'CatController@getarticles')->name('get-articles-by-cat');
     });
     Route::get('my-articles','UserController@showMyArticles')->name('view-my-article');
     Route::get('my-saved-articles','UserController@showMySavedArticles')->name('view-my-saved-article');
