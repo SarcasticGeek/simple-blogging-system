@@ -16,7 +16,7 @@ class Article extends Model
 
     public function savedUsers()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User', 'user_article');
     }
 
     public function cats()

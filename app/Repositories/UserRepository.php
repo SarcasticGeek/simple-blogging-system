@@ -11,9 +11,10 @@ class UserRepository implements UserRepositoryInterface{
 
     public function getAllsavedArticlesByUser($id){
         $user = $this->user->find($id);
-        return $user->whereHas('savedArticles', function($q) {
-            $q->where('is_published', true);
-        })->get();
+        $articles = $user->savedArticles->filter(function ($item) {
+            return $item->is_published;
+        })->values();
+        return $articles;
     }
 
     public function getUserArticles($id){

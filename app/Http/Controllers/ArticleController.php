@@ -62,4 +62,40 @@ class ArticleController extends Controller
         $author_name = $article->author->name;
         return view('blog.article')->with('article',$article)->with('author',$author_name);
     }
+
+    public function save($id) {
+        $user_id = Auth::user()->id;
+        $article = $this->article->saveArticletoUser($id, $user_id);
+        if($article){
+            return redirect()->route('view-article', ['id' => $id, 'success'=> true]);
+        }
+        return redirect()->route('view-article', ['id' => $id]);
+    }
+
+    public function unsave($id) {
+        $user_id = Auth::user()->id;
+        $article = $this->article->unsaveArticletoUser($id, $user_id);
+        if($article){
+            return redirect()->route('view-article', ['id' => $id, 'success'=> true]);
+        }
+        return redirect()->route('view-article', ['id' => $id]);
+
+    }
+
+    public function publish($id) {
+        $article = $this->article->publish($id);
+        if($article){
+            return redirect()->route('view-article', ['id' => $id, 'success'=> true]);
+        }
+        return redirect()->route('view-article', ['id' => $id]);
+
+    }
+
+    public function unpublish($id) {
+        $article = $this->article->unpublish($id);
+        if($article){
+            return redirect()->route('view-article', ['id' => $id, 'success'=> true]);
+        }
+        return redirect()->route('view-article', ['id' => $id]);
+    }
 }

@@ -28,8 +28,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('{id}/save', 'ArticleController@save')->name('save-article');
         Route::get('{id}/unsave', 'ArticleController@unsave')->name('unsave-article');
         Route::get('{id}/publish', 'ArticleController@publish')->name('publish-article');
-        Route::get('{id}/unpublish', 'ArticleController@unplish')->name('unpublish-article');
-        Route::get('{id}/comment', 'CommentController@unplish')->name('comment-article');
+        Route::get('{id}/unpublish', 'ArticleController@unpublish')->name('unpublish-article');
+        Route::post('{id}/comment', 'CommentController@create')->name('comment-article');
+        Route::get('{id}', 'ArticleController@showone')->name('view-article');
     });
     Route::group(['prefix' => 'cat'], function () {
         Route::get('/create', 'CatController@add')->name('create-cat');

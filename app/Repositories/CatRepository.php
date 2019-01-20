@@ -24,9 +24,9 @@ class CatRepository implements CatRepositoryInterface
     }
 
     public function filterPublishedArticlesByCat($id){
-        return $this->cat->whereHas('articles', function($q) {
-            $q->where('is_published', true);
-        })->get();
+        return $this->cat->articles->filter(function ($item) {
+            return $item->is_published;
+        })->values();
     }
 
     public function filterPublishedArticlesByCatInSaved($id, $user_id){

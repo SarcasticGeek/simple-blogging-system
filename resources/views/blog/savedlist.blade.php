@@ -14,8 +14,12 @@
                     <tbody>
                         <tr>
                         <td><a href="/article/{{$article->id}}">{{$article->title}}</a></td>
+                        @if(isset($article->saved))
                         <td><a class="btn btn-primary btn-xs" href="/article/{{$article->id}}/{{  $article->saved ? "unsave" : "save" }}"><span class="glyphicon glyphicon-upload">{{  $article->saved ? "Unsave" : "Save" }}</span></a></td>
-                        </tr>
+                        @else
+                        <td><a class="btn btn-primary btn-xs" href="/article/{{$article->id}}/unsave"><span class="glyphicon glyphicon-upload">Unsave</span></a></td>
+                        @endif
+                    </tr>
                     </tbody>
                     @endforeach
                 </table>
