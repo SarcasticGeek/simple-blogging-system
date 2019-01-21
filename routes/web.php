@@ -28,8 +28,8 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('{id}/delete', 'ArticleController@delete')->name('delete-action-article')->middleware(CheckAdmin::class);
         Route::get('{id}/save', 'ArticleController@save')->name('save-article');
         Route::get('{id}/unsave', 'ArticleController@unsave')->name('unsave-article');
-        Route::get('{id}/publish', 'ArticleController@publish')->name('publish-article');
-        Route::get('{id}/unpublish', 'ArticleController@unpublish')->name('unpublish-article');
+        Route::get('{id}/publish', 'ArticleController@publish')->name('publish-article')->middleware(CheckAdmin::class);
+        Route::get('{id}/unpublish', 'ArticleController@unpublish')->name('unpublish-article')->middleware(CheckAdmin::class);
         Route::post('{id}/comment', 'CommentController@create')->name('comment-article');
         Route::get('{id}', 'ArticleController@showone')->name('view-article');
     });
