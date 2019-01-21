@@ -14,7 +14,9 @@
 ## Screens
 
 1- Login Page
+
 ![alt text](readme-images/1.png)
+
 2- Home Page includes as listed below:
 - Add An Article (shown to Admin)
 - My Articles (shown to Admin)
@@ -22,12 +24,19 @@
 - Logout
 - Filter By category (cats)
 - You may save an article with clicking "Save" Button to your saved Articles
-![alt text](readme-images/2.png)
+
+![alt text](readme-images/2.PNG)
+
 3- Add An Article 
-![alt text](readme-images/3.png)
+
+![alt text](readme-images/3.PNG)
+
 4- Your saved Articles ,you can unsave one
-![alt text](readme-images/5.png)
+
+![alt text](readme-images/5.PNG)
+
 5-Article Page and you can comment
-![alt text](readme-images/6.png)
+
+![alt text](readme-images/6.PNG)
 
 ### Any inquiries, Mohamed Essam Fathalla <mohamedessamfathalla@gmail.com> 
