@@ -37,7 +37,7 @@ class User extends Authenticatable
     }
 
     public function cats()  {
-        return $this->belongsToMany('App\Cat');
+        return $this->belongsToMany('App\Cat', 'user_cat');
     }
 
     public function comments() {

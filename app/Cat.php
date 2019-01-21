@@ -13,6 +13,6 @@ class Cat extends Model
 
     public function authors()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User','user_cat');
     }
 }

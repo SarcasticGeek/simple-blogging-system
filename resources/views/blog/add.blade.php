@@ -11,6 +11,11 @@
                   <input type="text" class="form-control" id="title" name="title" required>
                 </div>
                 <div class="form-group">
+                        <label for="tags">Tags</label>
+                        <p>Tags with hastage like #Hey </p>
+                        <input type="text" class="form-control" id="tags" name="tags" required>
+                      </div>
+                <div class="form-group">
                   <label for="body">Body:</label>
                   <textarea class="form-control" rows="5" name="body"placeholder="Say something..."></textarea>
                 </div>
@@ -19,4 +24,5 @@
         </div>
     </div>
 </div>
+
 @endsection

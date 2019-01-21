@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Article;
+use App\Cat;
 use DB;
 
 class ArticleRepository implements ArticleRepositoryInterface {
@@ -13,8 +14,12 @@ class ArticleRepository implements ArticleRepositoryInterface {
         $this->article = $article;
     }
 
-    public function create($data){
-        return $this->article->create($data);
+    public function create($data,$cat_ids){
+        $article = $this->article->create($data);
+        if(sizeof($cat_ids)>0){
+            $article->cats()->sync($cat_ids);
+        }
+        return $article;
     }
 
     public function update($id, $data){

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Repositories\ArticleRepository;
+use App\Cat;
 use Auth;
 
 class ArticleController extends Controller
@@ -18,7 +19,8 @@ class ArticleController extends Controller
     public function index() {
         $user_id = Auth::user()->id;
         $articles = $this->article->showAllPublished($user_id);
-        return view('blog.savedlist')->with('articles',$articles);
+        $cats = Cat::all();
+        return view('blog.savedlist')->with('articles',$articles)->with('cats',$cats);
     }
 
     public function add() {
@@ -31,14 +33,28 @@ class ArticleController extends Controller
         ]);
 
         $user_id = Auth::user()->id;
+        $cat_ids = [];
+        if($request->tags){
+            $tags = $request->tags;
+            preg_match_all('/(#\w+)/u', $tags, $matches);
+            if ($matches) {
+                foreach ($matches[0] as $tag) {
+                    $cat = Cat::firstOrCreate(['name' => $tag]);                    ;
+                    $cat->name = $tag;
+                    $cat->save();
+                    $cat->authors()->attach(Auth::user()->id);
+                    $cat_ids []= $cat->id;
+                }
+            }
+        }
 
         $article = $this->article->create([
             'title'=> $request->title,
             'body' => $request->body,
-            'author_id' => $user_id
-        ]);
+            'author_id' => $user_id,
+        ],$cat_ids);
         if($article){
-            return view('home');
+            return redirect()->route('home');
         }
     }
 
